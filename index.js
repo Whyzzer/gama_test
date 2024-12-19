@@ -3,10 +3,14 @@ const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
+const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3030;
 
+//cors
+
+app.use(cors());
 // Swagger configuration
 const swaggerOptions = {
   swaggerDefinition: {
@@ -244,6 +248,7 @@ app.get("/recent-movies", (req, res) => {
     });
 });
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });
